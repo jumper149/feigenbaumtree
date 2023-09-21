@@ -12,7 +12,7 @@
 
   outputs = { self, nixpkgs }: {
 
-    packages.x86_64-linux.default =
+    packages.x86_64-linux.executable =
       with import nixpkgs { system = "x86_64-linux"; };
       let
         source = nix-gitignore.gitignoreSource [] ./.;
@@ -20,6 +20,25 @@
         };
 
       in (haskell.packages.ghc96.extend overlay).callCabal2nix "feigenbaumtree" source {};
+
+    packages.x86_64-linux.image =
+      with import nixpkgs { system = "x86_64-linux"; };
+      stdenv.mkDerivation {
+        name = "feigenbaumtree";
+        src = ./.;
+        buildPhase = ''
+          feigenbaumtree
+          magick-script haskell.magick
+        '';
+        installPhase = ''
+          mv haskell.png feigenbaumtree.png
+          cp feigenbaumtree.png $out
+        '';
+        nativeBuildInputs = [
+          imagemagick
+          self.packages.x86_64-linux.executable
+        ];
+      };
 
     devShells.x86_64-linux.default =
       with import nixpkgs { system = "x86_64-linux"; };
@@ -35,7 +54,7 @@
           pkgs.imagemagick
         ];
         packages = haskellPackages: [
-          self.packages.x86_64-linux.default
+          self.packages.x86_64-linux.executable
         ];
         withHoogle = false;
       };
