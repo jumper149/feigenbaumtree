@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:feigenbaumtree"
+
+    - path: "exe/Main.hs"
+      component: "feigenbaumtree:exe:feigenbaumtree"
