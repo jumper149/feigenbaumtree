@@ -15,6 +15,7 @@ library
   build-depends:
     , base >= 4
     , containers
+    , optparse-applicative
     , text
     , vector
   hs-source-dirs: src

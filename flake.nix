@@ -26,8 +26,13 @@
       stdenv.mkDerivation {
         name = "feigenbaumtree";
         src = ./.;
-        buildPhase = ''
-          feigenbaumtree
+        buildPhase = let
+          xDepth = 8;
+          yDepth = 6;
+          calcDepth = 5;
+          size = 512;
+        in ''
+          feigenbaumtree --x-depth 12 --y-depth 6 --calc-depth 5 --size 4096
           magick-script haskell.magick
         '';
         installPhase = ''
