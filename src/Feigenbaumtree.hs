@@ -14,6 +14,8 @@ data Config = MkConfig
     , configYDepth :: Word
     , configCalcDepth :: Word
     , configSize :: Word
+    , configOutScript :: FilePath
+    , configOutImage :: FilePath
     }
 
 options :: Opt.ParserInfo Config
@@ -24,6 +26,8 @@ options = Opt.info (Opt.helper <*> parser) docs
           configYDepth <- Opt.option Opt.auto $ Opt.long "y-depth"
           configCalcDepth <- Opt.option Opt.auto $ Opt.long "calc-depth"
           configSize <- Opt.option Opt.auto $ Opt.long "size"
+          configOutScript <- Opt.option Opt.auto $ Opt.long "out-script"
+          configOutImage <- Opt.option Opt.auto $ Opt.long "out-image"
           pure MkConfig {..}
       docs = Opt.fullDesc @Config
 
@@ -31,7 +35,7 @@ main :: IO ()
 main = do
   config :: Config <- Opt.execParser options
   let result = program config
-  T.writeFile "haskell.magick" $ magickScript (configSize config) result
+  T.writeFile (configOutScript config) $ magickScript (configOutImage config) (configSize config) result
   T.putStrLn "Generated script for imagemagick."
 
 program :: Config -> [(Double, Double)]
@@ -82,14 +86,13 @@ drawStatement maxSize (x, y) = "-draw \"point " <> T.pack (show newX) <> "," <> 
   newX = x * (fromIntegral maxSize / 4)
   newY = fromIntegral maxSize - y * (fromIntegral maxSize / 1)
 
-magickScript :: Word -> [(Double, Double)] -> T.Text
-magickScript maxSize coordinates =
+magickScript :: FilePath -> Word -> [(Double, Double)] -> T.Text
+magickScript outPath maxSize coordinates =
   T.unlines $
     [ "#!/usr/bin/env magick-script"
     , T.pack $ "-size " <> show maxSize <> "x" <> show maxSize <> " canvas:none"
     , "-fill rgba(0,0,0,0.3)"
     ]
       ++ (drawStatement maxSize <$> coordinates)
-      ++ [ "-blur 1x2"
-         , "-write haskell.png"
+      ++ [ "-write " <> T.pack outPath
          ]

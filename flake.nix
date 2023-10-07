@@ -28,12 +28,14 @@
         src = ./.;
         buildPhase = let
           xDepth = 8;
-          yDepth = 6;
+          yDepth = 3;
           calcDepth = 5;
           size = 512;
+          scriptPath = "haskell.magick";
+          imagePath = "haskell.png";
         in ''
-          feigenbaumtree --x-depth 12 --y-depth 6 --calc-depth 5 --size 4096
-          magick-script haskell.magick
+          feigenbaumtree --x-depth "${toString xDepth}" --y-depth "${toString yDepth}" --calc-depth "${toString calcDepth}" --size "${toString size}" --out-script "\"${scriptPath}\"" --out-image \""${imagePath}\""
+          magick-script ${scriptPath}
         '';
         installPhase = ''
           mv haskell.png feigenbaumtree.png
