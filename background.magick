@@ -1,0 +1,3 @@
+#!/usr/bin/env magick-script
+-size 3000x3000 canvas:none
+-write background.png
