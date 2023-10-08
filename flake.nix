@@ -38,8 +38,8 @@
           magick-script ${scriptPath}
         '';
         installPhase = ''
-          mv haskell.png feigenbaumtree.png
-          cp feigenbaumtree.png $out
+          mkdir $out
+          mv haskell.png $out/feigenbaumtree.png
         '';
         nativeBuildInputs = [
           imagemagick
@@ -53,12 +53,15 @@
         name = "feigenbaumtree-image-2";
         src = ./magick;
         buildPhase = ''
-          cp ${self.packages.x86_64-linux.image-1} haskell.png
+          cp ${self.packages.x86_64-linux.image-1.outPath}/feigenbaumtree.png haskell.png
           magick-script after-effects.magick
+          magick-script after-effects2.magick
+          magick-script background.magick
+          magick-script compose.magick
         '';
         installPhase = ''
-          mv haskell2.png feigenbaumtree.png
-          cp feigenbaumtree.png $out
+          mkdir $out
+          mv composed.png $out/feigenbaumtree.png
         '';
         nativeBuildInputs = [
           imagemagick
