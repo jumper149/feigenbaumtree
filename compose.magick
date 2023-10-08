@@ -1,6 +1,6 @@
 #!/usr/bin/env magick-script
 background.png haskell3.png
--compose dst-atop
+-compose src-over
 -gravity center
 -composite
 -write composed.png

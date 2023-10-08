@@ -1,5 +1,5 @@
 #!/usr/bin/env magick-script
 haskell2.png
 -crop 2048x4096+2048+0
--scale 4:1
+-scale 3:1
 -write haskell3.png

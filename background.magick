@@ -1,3 +1,9 @@
 #!/usr/bin/env magick-script
--size 3000x3000 canvas:none
+-size 3000x3000 gradient:none-black
+-channel A
+-fx "(u+(7/12))*(5/9)"
+-rotate 270
+-draw "rectangle 466,466 2534,2534"
+-fill white
+-draw "rectangle 476,476 2524,2524"
 -write background.png
