@@ -42,7 +42,7 @@ program :: Config -> [(Double, Double)]
 program MkConfig{..} = V.toList dots
   where
     rs :: V.Vector Double
-    rs = range configXDepth 0 4
+    rs = range configXDepth 2 4
 
     inits :: Double -> V.Vector Double
     inits r = range configYDepth 0 (r / 4)
@@ -83,7 +83,7 @@ range n x y = V.fromList $ times n f [x, y]
 drawStatement :: Word -> (Double, Double) -> T.Text
 drawStatement maxSize (x, y) = "-draw \"point " <> T.pack (show newX) <> "," <> T.pack (show newY) <> "\""
  where
-  newX = x * (fromIntegral maxSize / 4)
+  newX = (x - 2) * (fromIntegral maxSize / 2)
   newY = fromIntegral maxSize - y * (fromIntegral maxSize / 1)
 
 magickScript :: FilePath -> Word -> Word -> [(Double, Double)] -> T.Text

@@ -2,10 +2,9 @@
 ( -size 3000x2000 canvas:black
 )
 ( haskell2.png
-  -crop 2048x4096+2048+0
-  -scale 150%x31.25%
+  -scale 100%x25%
   -gravity West
-  -chop 72x0
+  -chop 1096x0
   -channel A
   -fx "1-u"
 )
