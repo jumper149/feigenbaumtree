@@ -35,7 +35,7 @@ main :: IO ()
 main = do
   config :: Config <- Opt.execParser options
   let result = program config
-  T.writeFile (configOutScript config) $ magickScript (configOutImage config) (configSize config) result
+  T.writeFile (configOutScript config) $ magickScript (configOutImage config) (configSize config) (configYDepth config) result
   T.putStrLn "Generated script for imagemagick."
 
 program :: Config -> [(Double, Double)]
@@ -86,12 +86,12 @@ drawStatement maxSize (x, y) = "-draw \"point " <> T.pack (show newX) <> "," <> 
   newX = x * (fromIntegral maxSize / 4)
   newY = fromIntegral maxSize - y * (fromIntegral maxSize / 1)
 
-magickScript :: FilePath -> Word -> [(Double, Double)] -> T.Text
-magickScript outPath maxSize coordinates =
+magickScript :: FilePath -> Word -> Word -> [(Double, Double)] -> T.Text
+magickScript outPath maxSize yDepth coordinates =
   T.unlines $
     [ "#!/usr/bin/env magick-script"
     , T.pack $ "-size " <> show maxSize <> "x" <> show maxSize <> " canvas:none"
-    , "-fill rgba(0,0,0,0.3)"
+    , "-fill rgba(0,0,0," <> T.pack (show ((0.25 :: Double) / (fromIntegral $ yDepth + 1))) <> ")"
     ]
       ++ (drawStatement maxSize <$> coordinates)
       ++ [ "-write " <> T.pack outPath

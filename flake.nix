@@ -15,22 +15,22 @@
     packages.x86_64-linux.executable =
       with import nixpkgs { system = "x86_64-linux"; };
       let
-        source = nix-gitignore.gitignoreSource [] ./.;
+        source = ./.;
         overlay = self: super: {
         };
 
       in (haskell.packages.ghc96.extend overlay).callCabal2nix "feigenbaumtree" source {};
 
-    packages.x86_64-linux.image =
+    packages.x86_64-linux.image-1 =
       with import nixpkgs { system = "x86_64-linux"; };
       stdenv.mkDerivation {
-        name = "feigenbaumtree";
+        name = "feigenbaumtree-image-1";
         src = ./.;
         buildPhase = let
-          xDepth = 8;
-          yDepth = 3;
+          xDepth = 12;
+          yDepth = 8;
           calcDepth = 5;
-          size = 512;
+          size = 4096;
           scriptPath = "haskell.magick";
           imagePath = "haskell.png";
         in ''
@@ -44,6 +44,25 @@
         nativeBuildInputs = [
           imagemagick
           self.packages.x86_64-linux.executable
+        ];
+      };
+
+    packages.x86_64-linux.image-2 =
+      with import nixpkgs { system = "x86_64-linux"; };
+      stdenv.mkDerivation {
+        name = "feigenbaumtree-image-2";
+        src = ./.;
+        buildPhase = ''
+          cp ${self.packages.x86_64-linux.image-1} haskell.png
+          magick-script after-effects.magick
+        '';
+        installPhase = ''
+          mv haskell2.png feigenbaumtree.png
+          cp feigenbaumtree.png $out
+        '';
+        nativeBuildInputs = [
+          imagemagick
+          self.packages.x86_64-linux.image-1
         ];
       };
 

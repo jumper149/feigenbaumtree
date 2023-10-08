@@ -1,0 +1,19 @@
+#!/usr/bin/env magick-script
+haskell.png
+-channel A
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-fx "u+0.3*(1-u^2)*sin(u*pi)^2"
+-blur 1x2
+-write haskell2.png
