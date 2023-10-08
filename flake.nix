@@ -15,7 +15,7 @@
     packages.x86_64-linux.executable =
       with import nixpkgs { system = "x86_64-linux"; };
       let
-        source = ./.;
+        source = ./haskell;
         overlay = self: super: {
         };
 
@@ -25,7 +25,7 @@
       with import nixpkgs { system = "x86_64-linux"; };
       stdenv.mkDerivation {
         name = "feigenbaumtree-image-1";
-        src = ./.;
+        src = ./haskell;
         buildPhase = let
           xDepth = 12;
           yDepth = 8;
@@ -51,7 +51,7 @@
       with import nixpkgs { system = "x86_64-linux"; };
       stdenv.mkDerivation {
         name = "feigenbaumtree-image-2";
-        src = ./.;
+        src = ./magick;
         buildPhase = ''
           cp ${self.packages.x86_64-linux.image-1} haskell.png
           magick-script after-effects.magick

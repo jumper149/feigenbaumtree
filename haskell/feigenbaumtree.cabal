@@ -4,7 +4,6 @@ version: 0
 synopsis: Chaos is upon us
 description: Behaviour of the logistic map
 license: BSD-3-Clause
-license-file: LICENSE
 author: Felix Springer
 maintainer: felixspringer149@gmail.com
 build-type: Simple
