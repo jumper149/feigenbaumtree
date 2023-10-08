@@ -55,7 +55,7 @@
         buildPhase = ''
           cp ${self.packages.x86_64-linux.image-1.outPath}/feigenbaumtree.png haskell.png
           magick-script improve-color.magick
-          magick-script after-effects2.magick
+          magick-script adjust-size.magick
           magick-script background.magick
           magick-script compose.magick
         '';

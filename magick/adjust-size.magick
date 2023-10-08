@@ -2,7 +2,7 @@
 ( -size 3000x2000 canvas:black
 )
 ( haskell2.png
-  -scale 100%x25%
+  -resize 100%x25%
   -gravity West
   -chop 1096x0
   -channel A
