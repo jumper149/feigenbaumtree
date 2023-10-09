@@ -58,16 +58,23 @@
           magick-script adjust-size.magick
           magick-script background.magick
           magick-script compose.magick
+          magick-script text.magick
+          magick-script add-text.magick
         '';
         installPhase = ''
           mkdir $out
-          mv composed.png $out/feigenbaumtree.png
+          mv text.png $out/feigenbaumtree.png
         '';
         nativeBuildInputs = [
           imagemagick
+          fira
           self.packages.x86_64-linux.image-1
         ];
       };
+
+    packages.x86_64-linux.font =
+      with import nixpkgs { system = "x86_64-linux"; };
+      pkgs.fira;
 
     devShells.x86_64-linux.default =
       with import nixpkgs { system = "x86_64-linux"; };
@@ -81,7 +88,9 @@
           implicit-hie
           rnix-lsp
           pkgs.imagemagick
+          pkgs.fira
         ];
+
         packages = haskellPackages: [
           self.packages.x86_64-linux.executable
         ];

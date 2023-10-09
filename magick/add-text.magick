@@ -1,35 +1,11 @@
 #!/usr/bin/env magick-script
-( composed.png
-  ( ( ( -background none
-        -fill white
-        -font Iosevka
-        -pointsize 180
-        label:"Felix Springer"
-        -blur 25x15
-      )
-      ( -size 500x1750 canvas:none
-      )
-      -append
-    )
-    ( -size 750x50 canvas:none
-    )
-    +append
-  )
-  -gravity center
-  -compose src-over
-  -composite
-)
-( ( -size 750x50 canvas:none
+composed.png
+( -background none
+  ( -size 150x50 canvas:none
   )
   ( ( -size 2000x1750 canvas:none
     )
-    ( -background none
-      -fill white
-      -font Iosevka
-      -pointsize 200
-      label:"Album Title"
-      -blur 25x15
-    )
+    just-text.png
     -append
   )
   +append
