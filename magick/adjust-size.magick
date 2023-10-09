@@ -14,12 +14,12 @@
   -font "/nix/store/5kynwxg0byi2ihi82q71m9h9il8xzry8-fira-4.202/share/fonts/opentype/FiraSansCondensed-Light.otf"
   -pointsize 140
   -gravity Center
-  -draw "text -760,-70 \"Felix Springer\""
+  -draw "text -703,-62 \"Felix Springer\""
   -blur 15x7
   -font "/nix/store/5kynwxg0byi2ihi82q71m9h9il8xzry8-fira-4.202/share/fonts/opentype/FiraSansCondensed-Regular.otf"
-  -pointsize 204
+  -pointsize 210
   -draw "text -760,+130 \"Album Title\""
-  -blur 12x4
+  -blur 3x3
 )
 -append
 -write haskell3.png
