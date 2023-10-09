@@ -1,5 +1,5 @@
 #!/usr/bin/env magick-script
-( -size 3000x2000 canvas:black
+( -size 3000x988 canvas:black
 )
 ( haskell2.png
   -resize 100%x25%
@@ -8,7 +8,18 @@
   -channel A
   -fx "1-u"
 )
-( -size 3000x2000 canvas:black
+( -size 3000x988 canvas:black
+  -background black
+  -fill none
+  -font "/nix/store/5kynwxg0byi2ihi82q71m9h9il8xzry8-fira-4.202/share/fonts/opentype/FiraSansCondensed-Light.otf"
+  -pointsize 140
+  -gravity Center
+  -draw "text -760,-70 \"Felix Springer\""
+  -blur 15x7
+  -font "/nix/store/5kynwxg0byi2ihi82q71m9h9il8xzry8-fira-4.202/share/fonts/opentype/FiraSansCondensed-Regular.otf"
+  -pointsize 204
+  -draw "text -760,+130 \"Album Title\""
+  -blur 12x4
 )
 -append
 -write haskell3.png

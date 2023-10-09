@@ -58,12 +58,10 @@
           magick-script adjust-size.magick
           magick-script background.magick
           magick-script compose.magick
-          magick-script text.magick
-          magick-script add-text.magick
         '';
         installPhase = ''
           mkdir $out
-          mv text.png $out/feigenbaumtree.png
+          mv composed.png $out/feigenbaumtree.png
         '';
         nativeBuildInputs = [
           imagemagick

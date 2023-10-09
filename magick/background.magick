@@ -9,6 +9,7 @@
 ( -size 3000x3000 gradient:none-black
   -channel A
   -fx "(u+(7/12))*(3/9)"
-  -rotate 90
+  -rotate 270
 ) -composite
+-rotate 180
 -write background.png
