@@ -12,6 +12,8 @@
 
   outputs = { self, nixpkgs }: {
 
+    packages.x86_64-linux.default = self.packages.x86_64-linux.image-2;
+
     packages.x86_64-linux.executable =
       with import nixpkgs { system = "x86_64-linux"; };
       let
