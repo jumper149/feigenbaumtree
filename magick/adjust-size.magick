@@ -13,12 +13,11 @@
   -fill none
   -gravity Center
   -font "fonts/braille-line.ttf"
-  -pointsize 180
-  -draw "text -500,+130 \"Album Title\""
+  -pointsize 230
+  -draw "text -260,+130 \"Album Title\""
   -blur 13x6
-  -font "/nix/store/5kynwxg0byi2ihi82q71m9h9il8xzry8-fira-4.202/share/fonts/opentype/FiraSansCondensed-Light.otf"
-  -pointsize 140
-  -draw "text -703,-92 \"Felix Springer\""
+  -pointsize 80
+  -draw "text -680,-95 \"Felix Springer\""
   -blur 5x3
 )
 -append

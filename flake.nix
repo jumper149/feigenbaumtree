@@ -67,14 +67,9 @@
         '';
         nativeBuildInputs = [
           imagemagick
-          fira
           self.packages.x86_64-linux.image-1
         ];
       };
-
-    packages.x86_64-linux.font =
-      with import nixpkgs { system = "x86_64-linux"; };
-      pkgs.fira;
 
     devShells.x86_64-linux.default =
       with import nixpkgs { system = "x86_64-linux"; };
@@ -88,7 +83,6 @@
           implicit-hie
           rnix-lsp
           pkgs.imagemagick
-          pkgs.fira
         ];
 
         packages = haskellPackages: [
