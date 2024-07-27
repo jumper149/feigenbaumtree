@@ -13,11 +13,11 @@
   -fill none
   -gravity Center
   -font "fonts/braille-line.ttf"
-  -pointsize 230
-  -draw "text -260,+130 \"Album Title\""
+  -pointsize 150
+  -draw "text -40,+128 \"Initial Inconsistency\""
   -blur 13x6
   -pointsize 80
-  -draw "text -680,-95 \"Felix Springer\""
+  -draw "text -675,-110 \"Felix Springer\""
   -blur 5x3
 )
 -append
