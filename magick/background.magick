@@ -2,7 +2,6 @@
 -seed 149
 -size 3000x3000 plasma:grey75-grey75
 -colorspace Gray
--brightness-contrast 17%x40%
 -blur 20x20
 -compose src-over
 -gravity center
@@ -11,5 +10,8 @@
   -fx "(u+(7/12))*(3/9)"
   -rotate 270
 ) -composite
+-brightness-contrast 84%x-60%
+-fill red
+-tint 5
 -rotate 180
 -write background.png
